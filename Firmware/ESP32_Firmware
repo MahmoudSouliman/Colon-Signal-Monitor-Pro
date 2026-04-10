@@ -1,0 +1,51 @@
+#include "BluetoothSerial.h"
+
+// Initialize Bluetooth Serial object
+BluetoothSerial SerialBT;
+
+// Control flag for data streaming
+bool isStreaming = false;
+
+// ADC Pin connected to the AD620 output
+const int analogPin = 34; 
+
+void setup() {
+  // Initialize Serial Monitor for debugging
+  Serial.begin(115200);
+  
+  // Set Bluetooth device name
+  SerialBT.begin("Colon_Monitor_Pro"); 
+  
+  Serial.println("ESP32 is ready for pairing. Device Name: Colon_Monitor_Pro");
+}
+
+void loop() {
+  // Check for incoming commands via Bluetooth
+  if (SerialBT.available()) {
+    char cmd = SerialBT.read();
+    
+    // Command 's' to start streaming
+    if (cmd == 's') {
+      isStreaming = true;
+      Serial.println("Streaming Started...");
+    }
+    
+    // Command 'p' to pause streaming
+    if (cmd == 'p') {
+      isStreaming = false;
+      Serial.println("Streaming Paused.");
+    }
+  }
+
+  // Handle data acquisition and transmission
+  if (isStreaming) {
+    // Read raw data from 12-bit ADC (0 - 4095)
+    int rawValue = analogRead(analogPin);
+    
+    // Send raw value via Bluetooth
+    SerialBT.println(rawValue);
+    
+    // Sampling rate: 50Hz (one sample every 20ms)
+    delay(20); 
+  }
+}
