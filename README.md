@@ -21,7 +21,7 @@ This system provides a portable and efficient solution for monitoring gastrointe
 * **Time-Domain Analysis:** X-axis synchronization in **Seconds** for accurate monitoring.
 
 ## 📸 Demo
-![Project Cover](Media/project_image.jpg)
+![Project Cover](Media/project_image.png)
 
 ## 💻 Technical Parameters
 * **Sampling Frequency:** 50 Hz.
