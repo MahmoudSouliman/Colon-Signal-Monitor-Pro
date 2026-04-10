@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Colon Monitor Pro</string>
+    <string name="app_title">EconG Signal Monitoring System</string>
+    
+    <string name="btn_start">Start Acquisition</string>
+    <string name="btn_pause">Pause Stream</string>
+    
+    <string name="bt_connected">Connected to ESP32</string>
+    <string name="bt_disconnected">Bluetooth Disconnected</string>
+    <string name="bt_searching">Searching for Colon_Monitor_Pro...</string>
+    
+    <string name="y_axis_label">Voltage (uV)</string>
+    <string name="x_axis_label">Time (s)</string>
+</resources>
